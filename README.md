@@ -31,17 +31,39 @@ const orders = [ { id: 1234, name: "iPhone 13 Pro Max",    price: "123000",  cus
 //                 {userId: 125, userName: "Nikhil", orders: [],},
 //                 ];  
 
-// const {id,  name} = users;  
-// const {customerId, price} = orders;  
-for(let i=0; i<users.length; i++){  
-const res = [];  
-const orderDetails = [];  
-console.log("value of i: ",i)  
-res.push( {userId:users[i].id , userName:users[i].name} )  
+# Answer
+
   
-if ( users[i].id === orders[i].customerId){  
-         orderDetails.push( {orderId:orders[i].id, productName:orders[i].name, productPrice: orders[i].price})  
-         res.order=orderDetails;  
-    }      
-    console.log(res);  
+const result = [];  
+  
+for (let i = 0; i < users.length; i++) {  
+  const { id, name } = users[i];  
+  
+  const newObj = {  
+    userID: id,  
+    userName: name,  
+    orders: [],  
+  };  
+  
+  for (let j = 0; j < orders.length; j++) {  
+    const {  
+      id: orderId,  
+      name: productName,  
+      price: productPrice,  
+      customerId,  
+    } = orders[j];  
+  
+    if (id === customerId) {  
+      const order = {  
+        orderId,  
+        productName,  
+        productPrice,  
+      };  
+      //console.log(newObj);  
+      newObj.orders.push(order);  
+    }  
+  }  
+  result.push(newObj);  
 }  
+  
+console.log(result);  
